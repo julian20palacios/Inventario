@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<h1 class="text-center">TIENDA 2</h1>
+<h4 class="text-center">Hay {{ tiendas|length }} láminas en esta tienda.</h4> 
+
+<div class="my-5">
+    <div id="myButtons" class="d-flex justify-content-start">
+        <form action="{% url 'eliminar_registros_tienda2' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark mr-3" id="deleteButton">Suprimir Información</button>
+        </form>        
+      <a href="{% url 'export_data_tienda2' %}" class="btn btn-dark mr-3" id="exportButton">Exportar datos</a>
+      <a href="{% url 'crear_tienda2' %}" class="btn btn-dark mr-3" id="createButton">Crear lámina</a>
+      <a href="{% url 'grafica_tienda2' %}" class="btn btn-dark mr-3" id="graphButton">Graficar</a>
+      <a href="{% url 'import_data_tienda2' %}" class="btn btn-dark mr-3" id="graphButton">¿Importar?</a>
+    </div>
+  </div>
+
+    <table class="table table-striped my-5">
+      <thead class="thead-dark">
+        <tr>
+          <th>Numero tienda</th>
+          <th>Serial</th>
+          <th>Fecha ingreso</th>
+          <th>Fecha actual</th>
+          <th>Dias</th>
+          <th>Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tienda in tiendas|dictsort:"dias" %}
+          {% if tienda.dias > 90 %}
+            <tr class="table-danger">
+              <td>{{ tienda.numero_tienda }}</td>
+              <td>{{ tienda.layer_code }}</td>
+              <td>{{ tienda.fecha_ingreso }}</td>
+              <td>{{ tienda.fecha_actual }}</td>
+              <td>{{ tienda.dias }}</td>
+              <td>{{ tienda.comentario }}</td>
+            </tr>
+          {% elif tienda.dias > 75 and tienda.dias <= 90 %}
+            <tr class="table-warning">
+              <td>{{ tienda.numero_tienda }}</td>
+              <td>{{ tienda.layer_code }}</td>
+              <td>{{ tienda.fecha_ingreso }}</td>
+              <td>{{ tienda.fecha_actual }}</td>
+              <td>{{ tienda.dias }}</td>
+              <td>{{ tienda.comentario }}</td>
+            </tr>
+          {% else %}
+            <tr class="table-success">
+              <td>{{ tienda.numero_tienda }}</td>
+              <td>{{ tienda.layer_code }}</td>
+              <td>{{ tienda.fecha_ingreso }}</td>
+              <td>{{ tienda.fecha_actual }}</td>
+              <td>{{ tienda.dias }}</td>
+              <td>{{ tienda.comentario }}</td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+  
+
+{% endblock %}

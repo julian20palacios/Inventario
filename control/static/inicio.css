@@ -1,0 +1,168 @@
+.card {
+    background-color: #434343;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    max-width: 600px;
+    padding: 5rem; /* Cambia este valor a tu preferencia */
+  }
+  
+
+  .card h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: inline-block;
+    margin-right: 1rem;
+    vertical-align: top;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .row {
+    display: flex;
+    margin-right: 5rem;
+    margin-left: 5  rem;
+  }
+  
+  
+
+  .hover-effect {
+    transition: all 0.3s ease-out;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  
+  .hover-effect:hover {
+    transform: translateY(-15px) rotateX(10deg);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hover-effect .card-body {
+    position: relative;
+    z-index: 5;
+  }
+  
+  .hover-effect:hover {
+    transform: translateY(-15px) rotateX(25deg);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    background-color: #F5F5F5;
+  }
+  
+  
+  .hover-effect:hover:before {
+    transform: rotateX(0deg);
+  }
+
+
+
+
+/* Estilo para el botón */
+#myButtons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#deleteButton {
+  margin-right: 10px;
+  animation: button-fade-in 0.5s ease;
+}
+
+#exportButton {
+  margin-right: 10px;
+  animation: button-fade-in 0.5s ease 0.1s;
+}
+
+#createButton {
+  margin-right: 10px;
+  animation: button-fade-in 0.5s ease 0.2s;
+}
+
+#graphButton {
+  animation: button-fade-in 0.5s ease 0.3s;
+}
+
+@keyframes button-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+
+
+  .tabla-tienda1 {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  
+  .tabla-tienda1 th,
+  .tabla-tienda1 td {
+    padding: 0.5em;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .tabla-tienda1 th {
+    background-color: #f2f2f2;
+    color: #444;
+  }
+  
+  .tabla-tienda1 tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .tabla-tienda1 tr:hover {
+    background-color: #ddd;
+  }
+  
+
+  .titulo {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #100d0d;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    opacity: 0; /* Añade esta propiedad */
+    animation: fadeIn 2s ease-in-out forwards; /* Añade esta propiedad */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 100; } /* Define el estado inicial de la animación */
+    to { opacity: 30; } /* Define el estado final de la animación */
+  }
+
+
+
+  
+  
+  

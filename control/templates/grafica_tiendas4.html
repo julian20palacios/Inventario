@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-9 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <canvas id="grafica"></canvas>
+          <a href="{% url 'render_tienda4' %}" class="btn btn-dark mr-3" id="graphButton">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById('grafica').getContext('2d');
+    var grafica = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+          label: 'Laminas por Valor',
+          data: {{ values|safe }},
+          backgroundColor: [
+  'rgba(153, 102, 255, 0.5)', // morado
+  'rgba(54, 162, 235, 0.5)', // azul
+  'rgba(255, 102, 204, 0.5)', // rosado
+],
+borderColor: [
+  'rgba(153, 102, 255, 1)', // morado
+  'rgba(54, 162, 235, 1)', // azul
+  'rgba(255, 102, 204, 1)', // rosado
+],
+
+          borderWidth: 2,
+          borderRadius: 10,
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(0,0,0,0.05)',
+            },
+          },
+          x: {
+            grid: {
+              color: 'rgba(0,0,0,0)',
+            },
+          },
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutBounce',
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Gráfico de Tiendas 4',
+            font: {
+              size: 24,
+              weight: 'bold',
+            },
+          },
+          legend: {
+            labels: {
+              font: {
+                size: 18,
+              },
+            },
+          },
+        },
+        layout: {
+          padding: {
+            left: 50,
+            right: 50,
+            top: 0,
+            bottom: 0
+          }
+        },
+        barPercentage: 0.8,
+      },
+    });
+  </script>
+  
+  
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'tablas.css' %}">
+<!DOCTYPE html>
+<html>
+
+<h1 class="text-center">Resumen del inventario Claro</h1>
+<a href="{% url 'grafica_tiendas' %}" class="btn btn-dark mr-3" id="graphButton">Graficar Información!</a>
+<body> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tienda</th>
+                <th>Cantidad Suministrada</th>
+                <th>Láminas Mayores a 90</th>
+                <th>Láminas Entre 75 y 90</th>
+                <th>Láminas Menores a 75</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{% url 'render_tienda1' %}" style="color: black; text-decoration: none;">Tienda 1</a></td>
+                <td>{{ tiendas.0.1.total }}</td>
+                <td>{{ tiendas.0.1.mayor_90 }}</td>
+                <td>{{ tiendas.0.1.entre_75_90 }}</td>
+                <td>{{ tiendas.0.1.menor_75 }}</td>               
+            </tr>
+            <tr>
+                <td><a href="{% url 'render_tienda2' %}" style="color: black; text-decoration: none;">Tienda 2</a></td>
+                <td>{{ tiendas.1.1.total }}</td>
+                <td>{{ tiendas.1.1.mayor_90 }}</td>
+                <td>{{ tiendas.1.1.entre_75_90 }}</td>
+                <td>{{ tiendas.1.1.menor_75 }}</td>
+            </tr>
+            <tr>
+                <td><a href="{% url 'render_tienda3' %}" style="color: black; text-decoration: none;">Tienda 3</a></td>
+                <td>{{ tiendas.2.1.total }}</td>
+                <td>{{ tiendas.2.1.mayor_90 }}</td>
+                <td>{{ tiendas.2.1.entre_75_90 }}</td>
+                <td>{{ tiendas.2.1.menor_75 }}</td>
+            </tr>
+            <tr>
+                <td><a href="{% url 'render_tienda4' %}" style="color: black; text-decoration: none;">Tienda 4</a></td>
+                <td>{{ tiendas.3.1.total }}</td>
+                <td>{{ tiendas.3.1.mayor_90 }}</td>
+                <td>{{ tiendas.3.1.entre_75_90 }}</td>
+                <td>{{ tiendas.3.1.menor_75 }}</td>
+            </tr>
+            <tr>
+                <td><a href="{% url 'render_tienda5' %}" style="color: black; text-decoration: none;">Tienda 5</a></td>
+                <td>{{ tiendas.4.1.total }}</td>
+                <td>{{ tiendas.4.1.mayor_90 }}</td>
+                <td>{{ tiendas.4.1.entre_75_90 }}</td>
+                <td>{{ tiendas.4.1.menor_75 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<h3 class="text-center">Explicación de Ruta.</h3>´
+
+<h6>No cree un gráfico de ruta porque en la tabla se analiza la información fácil. Una explicación audiovisual puede mejorar la experiencia del cliente.</h6>
+
+<h6>1.  Se evidencia que en la tienda número 2 hay 440 láminas mayores a 90 días.</h6>
+<h6>2.  En la tienda número 4 hay 4744 láminas de 5000 por lo tanto podría pasar las láminas vencidas de la tienda 2 a la tienda 4 y como instancia final abastecer la tienda 2 con nuevas láminas.</h6>
+<h6>3.  Para temas de la plataforma, podría ingresar a cada modulo exportar los archivos y importar los respectivos cambios, ejemplo: </h6>
+<h6>- Exportar la información de las dos tiendas, "tienda2_data", "tienda4_data".</h6>
+<h6>- Copiar la información de la Tienda 2 de los seriales que están mayores a 90, las siguientes columnas: "A1=numero_tienda	- B1= layer_code  - C1= fecha_ingreso" y pegarlos en el archivo de la hoja 4. Debe tener en cuenta modificar la fecha del archivo 4 con relación a las nuevas láminas porque se está dando un nuevo ingreso.</h6>
+<h6>- Guarde los respectivos cambios en los libros.</h6>
+<h6>- Ahora debe importarlos. Tenga en cuenta que el formato de los archivos excel debe tener los siguientes campos: </h6>
+<h6>- A1=numero_tienda	- B1= layer_code  - C1= fecha_ingreso, por lo tanto debe eliminar las columnas que sobran.</h6>
+<h6>- Antes de importar, debe limpiar las bases de datos. Dando click a suprimir información, una vez haya hecho esto importe la información.</h6>
+<h6>4.  Por último compruebe que se hayan realizado los respectivos cambios.</h6>
+
+
+    <script>
+        function animateTable() {
+          var table = document.querySelector(".table");
+          var rows = table.querySelectorAll("tr:not(:first-child)");     
+          rows.forEach(function(row, index) {
+            setTimeout(function() {
+              row.classList.add("tableRowFadeIn");
+            }, index * 100);
+          });
+        } 
+        window.onload = animateTable;
+    </script>  
+      
+</body>
+</html>
+{% endblock %}
