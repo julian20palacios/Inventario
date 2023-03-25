@@ -25,7 +25,7 @@ def inicio(request):
     return render(request, "inicio.html")
 
 def grafica_tiendas(request):
-    # Obtenemos la cantidad de objetos de cada categoría en cada modelo
+    
     menor_75 = [Tienda1.objects.filter(dias__lt=75).count(),
                 Tienda2.objects.filter(dias__lt=75).count(),
                 Tienda3.objects.filter(dias__lt=75).count(),
@@ -44,18 +44,17 @@ def grafica_tiendas(request):
                 Tienda4.objects.filter(dias__gt=90).count(),
                 Tienda5.objects.filter(dias__gt=90).count()]
 
-    # Sumamos las cantidades de cada modelo para obtener la cantidad total de objetos en cada categoría
+    
     menor_75_total = sum(menor_75)
     entre_75_90_total = sum(entre_75_90)
     mayor_90_total = sum(mayor_90)
 
-    # Preparamos los datos para la gráfica
-    # Preparamos los datos para la gráfica
+   
     labels = ['Menor a 75', 'Esta entre 75 y 90', 'Es mayor a 90']
     values_menor_75 = menor_75
     values_entre_75_90 = entre_75_90
     values_mayor_90 = mayor_90
-    # Renderizamos la plantilla con los datos para la gráfica
+    
     return render(request, 'grafica_comparativa.html', {
         'labels': labels,
         'values_menor_75': values_menor_75,
@@ -85,14 +84,14 @@ def cantidad_datos(request):
     
 
 def grafica_comparativa(request):
-    # Obtener la cantidad de registros para cada modelo
+   
     tienda1_count = Tienda1.objects.count()
     tienda2_count = Tienda2.objects.count()
     tienda3_count = Tienda3.objects.count()
     tienda4_count = Tienda4.objects.count()
     tienda5_count = Tienda5.objects.count()
     
-    # Pasar los valores a la plantilla HTML
+    
     context = {
         'tienda1_count': tienda1_count,
         'tienda2_count': tienda2_count,
@@ -101,7 +100,7 @@ def grafica_comparativa(request):
         'tienda5_count': tienda5_count,
     }
     
-    # Renderizar la plantilla con los datos necesarios
+    
     return render(request, 'grafica_comparativa.html', context)
 
 
